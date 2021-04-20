@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}{{ author.username }}{% endblock %}
+{% block header %}Страница пользователя{% endblock %}
+{% block content %}
+<main role="main" class="container">
+    <div class="row">
+
+        {% include 'includes/mini_profile.html' with author=author %}
+        <div class="col-md-9">
+
+            {% for post in page %}
+            {% include "includes/post_item.html" with post=post %}
+            {% endfor %}
+
+            {% include "includes/paginator.html" with items=page paginator=paginator%}
+
+        </div>
+    </div>
+</main>
+
+
+{% endblock %}
